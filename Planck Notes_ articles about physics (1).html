@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Planck Notes: articles about physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDF2F8;--surface:#F8FAFD;--ink:#14233B;--muted:#4A5B76;--line:#C5D1E2;--accent:#2B4BFF;--teal:#0F8B8D;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101B2E;--surface:#16243B;--ink:#E6EDF8;--muted:#9DB0CC;--line:#2B3D5C;--accent:#7C95FF;--teal:#4FC3C5;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101B2E;--surface:#16243B;--ink:#E6EDF8;--muted:#9DB0CC;--line:#2B3D5C;--accent:#7C95FF;--teal:#4FC3C5;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Source Serif 4",Georgia,serif;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.9;z-index:-1}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+.logo{font:700 1.15rem "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em}
+.logo i{font-style:normal;color:var(--accent)}
+nav a{font:500 .95rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--muted);text-decoration:none;margin-left:1.1rem}
+nav a:hover{color:var(--accent)}
+h1{font:700 clamp(2.2rem,8vw,3.6rem)/1.05 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;margin:2.5rem 0 1rem;max-width:14ch}
+.lead{font-size:1.2rem;color:var(--muted);max-width:34rem;margin:0 0 1.75rem}
+.scope{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.5rem .5rem .25rem}
+canvas{display:block;width:100%;height:150px}
+.cap{font:500 .85rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--muted);margin:.25rem .25rem .5rem}
+.cap b{font-weight:700}
+.k1{color:var(--accent)}.k2{color:var(--teal)}
+h2{font:700 1.5rem "Bricolage Grotesque",system-ui,sans-serif;margin:3rem 0 .75rem;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.chips button{font:500 .9rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.chips button:focus-visible,summary:focus-visible,.theme:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.row{border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:1.1rem 0}
+summary::-webkit-details-marker{display:none}
+.t{display:block;font:700 1.3rem/1.25 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em}
+summary:hover .t{color:var(--accent)}
+.m{display:flex;gap:.9rem;font:500 .85rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--teal);margin:.25rem 0}
+.s{margin:.25rem 0 0;color:var(--muted)}
+.body{padding:0 0 1.25rem;border-left:3px solid var(--accent);padding-left:1rem;margin-bottom:1.1rem}
+.body p{margin:0 0 .9rem}
+.eq{font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:var(--accent)}
+.theme{font:500 .9rem "Bricolage Grotesque",system-ui,sans-serif;background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:.25rem .7rem;cursor:pointer;margin-left:1.1rem}
+footer{margin:3rem 0 2rem;color:var(--muted);font-size:.9rem}
+.empty{color:var(--muted);padding:1rem 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="logo">Planck<i>Notes</i></div>
+  <nav><a href="#articles">Articles</a><a href="#about">About</a><button class="theme" id="theme" type="button">Theme</button></nav>
+</header>
+
+<main>
+<h1>Physics, one idea at a time.</h1>
+<p class="lead">Short, careful articles on how the universe works, from spinning tops to neutron stars.</p>
+
+<div class="scope">
+  <canvas id="wave" aria-label="Two moving waves and their sum" role="img"></canvas>
+  <p class="cap"><b class="k1">Wave A</b> and <b class="k2">Wave B</b> add up to the dark line. Where crests meet crests, the sum grows. This is interference.</p>
+</div>
+
+<h2 id="articles">Articles</h2>
+<div class="chips" id="chips" role="group" aria-label="Filter by topic"></div>
+<div id="list">
+
+<article class="row" data-topic="Optics"><details><summary>
+<span class="t">Why the sky is blue</span>
+<span class="m"><span>Optics</span><span>3 min read</span></span>
+<p class="s">Air scatters short wavelengths far more strongly than long ones.</p></summary>
+<div class="body">
+<p>Sunlight looks white but contains every color. As it passes through the atmosphere, molecules of nitrogen and oxygen scatter it in all directions. This is Rayleigh scattering, and its strength grows as <span class="eq">1/λ⁴</span>, so blue light scatters roughly five to six times more than red.</p>
+<p>Violet scatters even more, but the Sun emits less of it, the upper atmosphere absorbs some, and our eyes respond weakly to it. The result looks blue. At sunset, light travels through much more air, the blue is scattered away from your line of sight, and reds and oranges remain.</p>
+</div></details></article>
+
+<article class="row" data-topic="Thermodynamics"><details><summary>
+<span class="t">Entropy and the arrow of time</span>
+<span class="m"><span>Thermodynamics</span><span>4 min read</span></span>
+<p class="s">Why eggs break but never unbreak, and what that says about the past.</p></summary>
+<div class="body">
+<p>The laws of motion work the same forwards and backwards, yet we only ever see time run one way. The answer lies in counting. Boltzmann defined entropy as <span class="eq">S = k ln W</span>, where W is the number of microscopic arrangements that look the same on the large scale.</p>
+<p>A broken egg has vastly more arrangements than an intact one, so systems drift toward it. The arrow of time is therefore tied to a puzzle about the beginning: the early universe must have started in a state of very low entropy.</p>
+</div></details></article>
+
+<article class="row" data-topic="Relativity"><details><summary>
+<span class="t">Time dilation you can measure</span>
+<span class="m"><span>Relativity</span><span>4 min read</span></span>
+<p class="s">Cosmic-ray muons reach the ground only because their clocks run slow.</p></summary>
+<div class="body">
+<p>Muons are created about 15 kilometres up when cosmic rays hit the atmosphere. At rest a muon lives around 2.2 microseconds, enough to travel only a few hundred metres even at nearly the speed of light.</p>
+<p>Yet many reach the ground. From our frame, the muon’s internal clock runs slow by the Lorentz factor <span class="eq">γ = 1/√(1 − v²/c²)</span>, extending its lifetime many times over. Detectors at sea level count the survivors, and the numbers match Einstein’s prediction.</p>
+</div></details></article>
+
+<article class="row" data-topic="Quantum"><details><summary>
+<span class="t">The double-slit experiment</span>
+<span class="m"><span>Quantum</span><span>5 min read</span></span>
+<p class="s">Single electrons build an interference pattern, one dot at a time.</p></summary>
+<div class="body">
+<p>Fire electrons at a barrier with two narrow slits and record where each lands. Even when they are sent one at a time, the dots gradually form bands of high and low density, the signature of waves interfering.</p>
+<p>If you add a detector to learn which slit each electron used, the bands disappear. The experiment shows that quantum objects are described by probability amplitudes that add together, and that gaining which-path information changes the outcome.</p>
+</div></details></article>
+
+<article class="row" data-topic="Mechanics"><details><summary>
+<span class="t">Why a spinning top does not fall</span>
+<span class="m"><span>Mechanics</span><span>3 min read</span></span>
+<p class="s">Gravity turns the spin axis sideways instead of tipping the top over.</p></summary>
+<div class="body">
+<p>A tilted top feels a torque from gravity about its contact point. For a non-spinning object that torque makes it fall. For a spinning one, torque changes the angular momentum vector, and the change points sideways, perpendicular to the tilt.</p>
+<p>The axis therefore sweeps slowly around the vertical, a motion called precession. The faster the spin, the slower the precession. Friction gradually reduces the spin, and when it is low enough the top wobbles and falls.</p>
+</div></details></article>
+
+<article class="row" data-topic="Astrophysics"><details><summary>
+<span class="t">How a neutron star holds together</span>
+<span class="m"><span>Astrophysics</span><span>4 min read</span></span>
+<p class="s">Quantum rules about identical particles resist the crush of gravity.</p></summary>
+<div class="body">
+<p>When a massive star runs out of fuel, its core collapses. If the core is heavy enough, protons and electrons are squeezed into neutrons, leaving an object more massive than the Sun but only about 20 kilometres across.</p>
+<p>What stops further collapse is neutron degeneracy pressure. The Pauli exclusion principle forbids identical neutrons from sharing the same quantum state, so squeezing them together forces them into higher energies, which pushes back. Beyond a limit, even this fails and a black hole forms.</p>
+</div></details></article>
+
+</div>
+<p class="empty" id="empty" hidden>No articles in this topic yet.</p>
+
+<h2 id="about">About</h2>
+<p>Planck Notes publishes short explanations of physics ideas, written to be read in a few minutes. Pick a topic above, open an article, and read on.</p>
+</main>
+
+<footer>© 2026 Planck Notes</footer>
+</div>
+
+<script>
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('.row'));
+  var topics=['All'];
+  rows.forEach(function(r){var t=r.dataset.topic;if(topics.indexOf(t)<0)topics.push(t)});
+  var chips=document.getElementById('chips'),empty=document.getElementById('empty');
+  topics.forEach(function(t,i){
+    var b=document.createElement('button');b.type='button';b.textContent=t;
+    b.setAttribute('aria-pressed',i===0?'true':'false');
+    b.onclick=function(){
+      [].forEach.call(chips.children,function(c){c.setAttribute('aria-pressed',c===b?'true':'false')});
+      var n=0;rows.forEach(function(r){var show=t==='All'||r.dataset.topic===t;r.hidden=!show;if(show)n++});
+      empty.hidden=n>0;
+    };
+    chips.appendChild(b);
+  });
+
+  var root=document.documentElement,tb=document.getElementById('theme');
+  tb.onclick=function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+  };
+
+  var cv=document.getElementById('wave'),ctx=cv.getContext('2d'),W,H,dpr;
+  function size(){dpr=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  size();addEventListener('resize',size);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function line(f,col,w){
+    ctx.beginPath();
+    for(var x=0;x<=W;x+=3){var y=H/2+f(x);x?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+    ctx.strokeStyle=col;ctx.lineWidth=w;ctx.stroke();
+  }
+  function draw(t){
+    var cs=getComputedStyle(root),a=cs.getPropertyValue('--accent'),b=cs.getPropertyValue('--teal'),k=cs.getPropertyValue('--ink');
+    ctx.clearRect(0,0,W,H);
+    var A=H*.17,fa=function(x){return A*Math.sin(x*.03-t*1.4)},fb=function(x){return A*Math.sin(x*.041+t*1.1)};
+    ctx.globalAlpha=.55;line(fa,a,1.5);line(fb,b,1.5);ctx.globalAlpha=1;
+    line(function(x){return fa(x)+fb(x)},k,2.5);
+  }
+  if(reduce){draw(1.2)}else{(function loop(ms){draw(ms/1000);requestAnimationFrame(loop)})(0)}
+})();
+</script>
+</body>
+</html>
